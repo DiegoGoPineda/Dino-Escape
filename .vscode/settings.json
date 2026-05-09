@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Dino-Escape.slnx",
+    "dotnet.defaultSolution": "Dino Escape.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
