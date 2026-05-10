@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 
 public class RecollecionFrutas : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class RecollecionFrutas : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().enabled = false;
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-             Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0.5f);
         }
     }
 }
