@@ -21,12 +21,14 @@ public class playerMove : MonoBehaviour
     public float fuerzaRebote = 20f;
 
     public int vida = 3;
+    public int vidaMax = 3;
     public bool muerto;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        vida = vidaMax;
     }
 
 
@@ -107,7 +109,10 @@ public class playerMove : MonoBehaviour
                 rb2D.linearVelocity = Vector2.zero; // Frena en seco cualquier inercia o física activa
                 // ----------------------------------------------
 
-                // Aquí puedes agregar la lógica para manejar la muerte del jugador, como reproducir una animación de muerte o reiniciar el nivel.
+                if (GameManager.instance != null)
+                {
+                    GameManager.instance.GameOver();
+                }
             }
 
             // 1. Calculamos la distancia para saber de qué lado nos golpeó
@@ -152,5 +157,13 @@ public class playerMove : MonoBehaviour
    
    public void DesactivarAtaque(){
         atacando = false;
+    }
+
+    public void CurarVida(int cantidad){
+        if(muerto) return; // No puede curarse si está muerto
+        vida += cantidad;
+        if(vida > vidaMax){
+            vida = vidaMax;
+        }
     }
 }

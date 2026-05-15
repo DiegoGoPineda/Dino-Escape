@@ -8,7 +8,7 @@ public class EnemyControler : MonoBehaviour
     public float detectionRadius = 5.0f;
     public int vida = 3;
     private Rigidbody2D rb2D;
-    private Vector2 movement;
+    private float movementX;
 
     private bool enMovimiento;
 
@@ -122,17 +122,17 @@ public class EnemyControler : MonoBehaviour
             {
                 transform.localScale = new Vector3(1, 1, 1); // Voltea el sprite a la derecha
             }
-            movement = new Vector2(direction.x, 0); // Le decimos hacia dónde moverse
+            movementX = direction.x; // Le decimos hacia dónde moverse
             enMovimiento = true; // Activamos la animación de caminar
         }
         // Si el jugador está lejos, ¡DETENTE!
         else
         {
-            movement = Vector2.zero; // Frenamos al enemigo
+            movementX = 0; // Frenamos al enemigo
             enMovimiento = false; // Apagamos la animación de caminar
         }
         if(!recibiendoDanio)
-        rb2D.MovePosition(rb2D.position + movement * speed * Time.deltaTime);
+        rb2D.linearVelocity = new Vector2(movementX * speed, rb2D.linearVelocity.y);
     }
 
 }
