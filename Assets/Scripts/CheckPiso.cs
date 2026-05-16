@@ -14,4 +14,4 @@ public class CheckPiso : MonoBehaviour
     {
               isGrounded = false; // El jugador no está en el suelo
     }
-}
+}       
